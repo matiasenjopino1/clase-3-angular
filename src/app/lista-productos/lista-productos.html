@@ -1,4 +1,7 @@
-<div>
+<div *ngIf="productos.length == 0">
+    No hay productos
+</div>
+<div *ngIf="productos.length !== 0">
     <table>
         <thead>
             <tr>
@@ -10,7 +13,7 @@
                 <th>Actions</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody> 
             <tr *ngFor="let producto of productos">
                 <td>{{producto.id}}</td>
                 <td>{{producto.nombre}}</td>
