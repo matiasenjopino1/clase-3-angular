@@ -1,4 +1,4 @@
-# clase-2-angular
+# clase-3-angular
 
 Se crea una tabla con id,nombre,precio,porcentajePrecio(porcentaje de descuento) y fecha.
 Se usa *ngFor para iterar productos.
