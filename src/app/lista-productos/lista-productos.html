@@ -1,0 +1,27 @@
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Precio con descuento</th>
+                <th>Fecha Alta</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let producto of productos">
+                <td>{{producto.id}}</td>
+                <td>{{producto.nombre}}</td>
+                <td>{{producto.precio | currency:'ARS'}}</td>
+                <td> ${{ producto.precio | descuento:producto.descuentoPorcentaje}}</td>
+                <td>{{producto.fechaAlta | date:'dd/MM/yyyy'}}</td>
+                <td>
+                    <button (click)="borrarProducto(producto.id)">Eliminar Producto</button>
+                    <button (click)="agregarProducto()">Agregar Producto</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
