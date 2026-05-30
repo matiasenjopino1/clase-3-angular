@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import productos from '../api/productos';
+import { Producto } from '../api/productosClass';
 @Injectable({
   providedIn: 'root',
 })
@@ -10,8 +11,14 @@ export class Productos {
     return productos
   }
 
-  addProducto(producto:any){
-    productos.push(producto)
+  addProducto(productoRaw:Omit<Producto,'id'>){
+
+    const producto_id = productos.length > 0 ? Math.max(...productos.map(producto => producto.id)) + 1 : 1
+    const new_product:Producto = {
+      id:producto_id,
+      ...productoRaw
+    }
+    productos.push(new_product)
   }
 
   deleteProducto(id:any){

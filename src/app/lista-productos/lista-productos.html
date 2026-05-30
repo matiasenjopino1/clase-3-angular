@@ -1,7 +1,11 @@
-<div *ngIf="productos.length == 0">
+@if(productos.length === 0){
+<div>
     No hay productos
 </div>
-<div *ngIf="productos.length !== 0">
+}
+@if(productos.length !== 0){
+<div>
+    <button (click)="agregarProducto()">Agregar Producto</button>
     <table>
         <thead>
             <tr>
@@ -13,18 +17,20 @@
                 <th>Actions</th>
             </tr>
         </thead>
-        <tbody> 
-            <tr *ngFor="let producto of productos">
+        <tbody>
+            @for(producto of productos; track producto.id) {
+            <tr>
                 <td>{{producto.id}}</td>
                 <td>{{producto.nombre}}</td>
-                <td>{{producto.precio | currency:'ARS'}}</td>
+                <td>{{producto.precio | currency:'ARS': 'symbol': '1.2-2'}}</td>
                 <td> ${{ producto.precio | descuento:producto.descuentoPorcentaje}}</td>
                 <td>{{producto.fechaAlta | date:'dd/MM/yyyy'}}</td>
                 <td>
                     <button (click)="borrarProducto(producto.id)">Eliminar Producto</button>
-                    <button (click)="agregarProducto()">Agregar Producto</button>
                 </td>
             </tr>
+            }
         </tbody>
     </table>
 </div>
+}

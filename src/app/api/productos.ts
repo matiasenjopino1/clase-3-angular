@@ -1,4 +1,6 @@
-const productos = [
+import { Producto } from "./productosClass"
+
+const productos:Producto[] = [
     {
         id:1,
         nombre: 'remera roja',
@@ -22,7 +24,7 @@ const productos = [
     },
     {
         id:4,
-        nombre: 'violeta',
+        nombre: 'remera violeta',
         precio: 1000,
         descuentoPorcentaje: 20,
         fechaAlta: new Date('2026-05-05')
